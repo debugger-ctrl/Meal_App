@@ -70,7 +70,6 @@ struct RecipeDetailView: View {
                                 Text("- \(recipe.measurements[index])")
                                     .foregroundColor(.secondary)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                
                             }
                             .padding(.vertical, 4)
                         }
