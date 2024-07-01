@@ -51,13 +51,8 @@ struct RecipeDetailView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                     
-                    
-                    
-                    Divider()
-                        .padding()
-                    
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("INGREDIENTS")
+                        Text("Ingredients")
                             .font(.headline)
                             .foregroundColor(.accentColor)
                             .padding(.bottom, 4)
@@ -80,16 +75,23 @@ struct RecipeDetailView: View {
                         .padding()
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("RECIPE")
+                        Text("Instructions")
                             .font(.headline)
                             .foregroundColor(.accentColor)
                             .padding(.bottom, 4)
                         
-                        Text(recipe.instructions)
-                            .foregroundColor(.primary)
-                            .padding(.horizontal)
-                            .fixedSize(horizontal: false, vertical: true)
+                        // Split the instructions by ". " and create bullet points
+                        ForEach(recipe.instructions.split(separator: ".").map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }, id: \.self) { instruction in
+                            if !instruction.isEmpty {
+                                HStack(alignment: .top) {
+                                    Text("•")
+                                    Text("\(instruction).")
+                                }
+                                .padding(.vertical, 2)
+                            }
+                        }
                     }
+                    .padding(.horizontal)
                     
                     Spacer()
                 } else {
