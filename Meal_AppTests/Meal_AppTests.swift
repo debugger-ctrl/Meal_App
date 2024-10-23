@@ -10,7 +10,7 @@ import XCTest
 
 final class Meal_AppTests: XCTestCase {
 
-    override func setUpWithError() throws {
+    override func setUpWithError() throws error {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
